@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Global Temperature</title>
+    <link href="styles/styles.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg navbar-light bg-light"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href=".">Global Temperature Anomaly & Country-Level Climate Visualizer</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="countryDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Country
+              </a>
+              <ul
+                id="country-list"
+                class="dropdown-menu dropdown-menu-end scrollable-menu"
+                aria-labelledby="navbarDropdown"
+              ></ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="yearDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Year
+              </a>
+              <ul
+                id="year-list"
+                class="dropdown-menu dropdown-menu-end scrollable-menu"
+                aria-labelledby="navbarDropdown"
+              ></ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="MonthDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Month
+              </a>
+              <ul
+                id="month-list"
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdown"
+              ></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="outerContainer">
+      <div class="centered-flex">
+        <div id="choroplethMap"></div>
+        <input type="range" value="0" class="slider" id="yearSlider" />
+        <button id="play-button" class="btn btn-outline-dark shadow-none">Pause</button>
+      </div>
+      <!-- <p>The plot is below</p> -->
+      <!-- <h3>The ploar and area chart extracted from the data</h3> -->
+      <div id="chartContainer">
+        <div id="polarArea"></div>
+        <div id="areaChart"></div>
+        <div id="anomalyRadial"></div>
+      </div>
+      <p>The global warming temperature data is showing dynamically for a specific country as well as displaying the evolution of the world's temperature anomaly throughout the years.</p>
+      <h5>Motive behind the project</h5>
+      <div>
+        <h3>WHY</h3>
+          <li>Comprehensive Climate Insights: Offers a deep dive into global temperature changes spanning the past 120 years (1901–2020).</li>
+          <li>Exploration of Anomalies: Empowers users to investigate temperature anomalies and long-term trends, emphasizing seasonal and regional variations. </li>
+          <li>Enhanced Understanding: Provides valuable tools for understanding climate patterns, supporting research, and raising awareness of global climate changes.</li>
+        <h3>HOW</h3>
+          <li>Focused and Informative Visuals: Utilizes a clean, distraction-free map with color-coded temperature ranges to maximize the impact of data visualization.</li>
+          <li>Effortless Comparisons: Features side-by-side views of spatial and temporal trends, enabling quick and clear comparisons across regions and time frames.</li>
+          <li>Multi-Dimensional Views: Integrates map, radial plots, and line charts to separate and highlight spatial, temporal, and anomaly-based trends.</li>
+          <li>Seasonal Breakdown: Offers monthly and yearly faceted views to allow users to explore seasonal trends in greater detail.</li>
+          <li>Integrated Perspectives: Combines different visual elements (map, radial, and line charts) to provide a comprehensive analysis of the dataset from multiple angles.</li>
+          <li>User-Centric Filtering: Includes dynamic filtering options by country, year, and month, enabling users to customize their exploration and focus on relevant data.</li>
+      </div>
+    </div>
+    <div class="tooltip" style="opacity: 0"></div>
+  </body>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v3.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+fetch('/data/world.geo.json')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error fetching data:', error));
+  </script>
+
+  <script type="module" src="./index.js"></script>
+</html>
