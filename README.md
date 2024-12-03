@@ -1,6 +1,6 @@
 # Global Temperature Trends Visualization 🌍🌡️
 
-### ## [Visit Link](https://shubham-singh0109.github.io/Global_Temperature_Visualizer/)
+### [Visit Link](https://shubham-singh0109.github.io/Global_Temperature_Visualizer/)
 
 ## Overview
 This project provides an interactive platform to explore global temperature changes over the past 120 years (1901–2020). It is designed to help users analyze temperature anomalies, long-term trends, and seasonal and regional variations through intuitive and dynamic visualizations.
